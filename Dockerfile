@@ -1,4 +1,4 @@
-FROM golang:1.9.2-alpine3.6
+FROM golang:1.10.3-alpine3.7
 
 RUN apk --no-cache add ca-certificates curl git make openssh-client docker bash bc mongodb-tools \
     && curl -s https://glide.sh/get | sh \
