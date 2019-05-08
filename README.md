@@ -1,5 +1,5 @@
 # golang-compile
 
 
-golang glide bash docker git openssh-client
+golang bash docker git openssh-client
 
