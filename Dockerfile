@@ -1,11 +1,9 @@
-FROM golang:1.15.8-alpine3.13
+FROM golang:1.16-alpine3.13
 
 RUN apk --no-cache add ca-certificates curl git make openssh-client docker bash bc  \
     && sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd \
-    && mkdir -p /tmp/go/src \
-    && GOPATH=/tmp/go go get -u golang.org/x/lint/golint \
-    && mv /tmp/go/bin/golint /usr/bin/ && rm -rf /tmp/go \
-    && GOPATH=/tmp/go go get github.com/mongodb/mongo-tools/mongoimport  \
-    && GOPATH=/tmp/go go build -o /usr/bin/mongoimport /tmp/go/src/github.com/mongodb/mongo-tools/mongoimport/main/mongoimport.go && rm -rf /tmp/go
+    && go install golang.org/x/lint/golint@latest \
+    && go install github.com/mongodb/mongo-tools/mongoimport/main@latest && mv /go/bin/main /go/bin/mongoimport \
+    && rm -rf /go/pkg
 
 
