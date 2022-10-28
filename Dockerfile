@@ -1,4 +1,4 @@
-FROM golang:1.18.3-alpine3.16
+FROM golang:1.19.2-alpine3.16
 
 RUN apk --no-cache add ca-certificates curl git make openssh-client docker bash bc  \
     && sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd \
